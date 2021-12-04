@@ -1,2 +1,11 @@
 # podcast-rss-download
-downloads mp3 files from an rss feed
+Downloads all audio files from an rss feed, sets file name to episode title 
+
+Requires requests, feedparser, and  tqdm (progress bar)
+
+To install using pip:
+
+```````bash
+python3 -m pip install requests feedparser tqdm
+```````
+
