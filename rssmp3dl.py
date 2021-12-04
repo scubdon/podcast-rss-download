@@ -1,16 +1,13 @@
-
 import feedparser
 import requests
 from tqdm import tqdm   # progress bar
 
-d=feedparser.parse('<Feed>')   # e.g. d=feedparser.parse('http://www.example.com/rss.xml')
+d=feedparser.parse('<Feed>')   # <Feed> can be either the URL of the RSS feed or the path to an xml file
 
 for entry in tqdm(d.entries):
-    
     file_name = entry.title + '.mp3'
-    
     links = entry.links
-    
+
     for link in links:
         if link.type == 'audio/mpeg':
             r = requests.get(link.href, stream = True)
@@ -19,4 +16,4 @@ for entry in tqdm(d.entries):
                     if chunk:
                         f.write(chunk)
 
-print ("All episodes downloaded!")
+print("All episodes downloaded!")
